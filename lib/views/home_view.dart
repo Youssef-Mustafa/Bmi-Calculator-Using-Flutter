@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/widgets/boxes/custom_box.dart';
 import 'package:bmi_calculator/widgets/boxes/gender_box.dart';
 import 'package:bmi_calculator/widgets/boxes/height_box.dart';
 import 'package:bmi_calculator/widgets/custom_app_bar.dart';
@@ -35,7 +36,24 @@ class HomeView extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 24.0),
             child: HeightBox(),
-          )
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CustomBox(
+                  boxTitle: 'Weight',
+                ),
+                CustomBox(
+                  boxTitle: 'Age',
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
