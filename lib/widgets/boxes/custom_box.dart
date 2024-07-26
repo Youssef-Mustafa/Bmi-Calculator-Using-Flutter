@@ -10,7 +10,7 @@ class CustomBox extends StatefulWidget {
 }
 
 class _CustomBoxState extends State<CustomBox> {
-  int weight = 150;
+  int weight = 74;
   int age = 19;
   @override
   Widget build(BuildContext context) {
