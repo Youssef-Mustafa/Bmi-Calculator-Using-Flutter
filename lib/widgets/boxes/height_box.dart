@@ -10,7 +10,7 @@ class HeightBox extends StatefulWidget {
 }
 
 class _HeightBoxState extends State<HeightBox> {
-  double value = 0;
+  double value = 150;
   @override
   Widget build(BuildContext context) {
     return Container(

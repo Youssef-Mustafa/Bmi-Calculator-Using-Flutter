@@ -2,6 +2,7 @@ import 'package:bmi_calculator/widgets/boxes/custom_box.dart';
 import 'package:bmi_calculator/widgets/boxes/gender_box.dart';
 import 'package:bmi_calculator/widgets/boxes/height_box.dart';
 import 'package:bmi_calculator/widgets/custom_app_bar.dart';
+import 'package:bmi_calculator/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatelessWidget {
@@ -54,6 +55,8 @@ class HomeView extends StatelessWidget {
               ],
             ),
           ),
+          Spacer(),
+          CustomButton(),
         ],
       ),
     );
