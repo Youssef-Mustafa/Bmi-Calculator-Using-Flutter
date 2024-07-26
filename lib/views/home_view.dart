@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/constant.dart';
 import 'package:bmi_calculator/widgets/boxes/custom_box.dart';
 import 'package:bmi_calculator/widgets/boxes/gender_box.dart';
 import 'package:bmi_calculator/widgets/boxes/height_box.dart';
@@ -10,14 +11,14 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Column(
         children: [
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(top: 16.0),
             child: CustomAppBar(),
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.symmetric(horizontal: 24.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -31,17 +32,17 @@ class HomeView extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.symmetric(horizontal: 24.0),
             child: HeightBox(),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.symmetric(horizontal: 24.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -55,8 +56,12 @@ class HomeView extends StatelessWidget {
               ],
             ),
           ),
-          Spacer(),
-          CustomButton(),
+          const Spacer(),
+          CustomButton(
+            onPressed: () {
+              Navigator.pushNamed(context, kResultPage);
+            },
+          ),
         ],
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:bmi_calculator/constant.dart';
 import 'package:bmi_calculator/views/home_view.dart';
+import 'package:bmi_calculator/views/result_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,6 +13,9 @@ class BmiCalculator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      routes: {
+        ResultView.id: (context) => const ResultView(),
+      },
       theme: ThemeData(
         useMaterial3: true,
         scaffoldBackgroundColor: kPrimaryColor,

@@ -6,3 +6,6 @@ const kSecondaryColor = Color(0XFF111428);
 const kButtonsColor = Color(0XFFeb1555);
 const kTextPrimaryColor = Color(0XFF868892);
 const kTextSecondaryColor = Colors.white;
+
+//Define pages
+const kResultPage = 'ResultPage';
