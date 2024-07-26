@@ -1,4 +1,5 @@
 import 'package:bmi_calculator/widgets/boxes/gender_box.dart';
+import 'package:bmi_calculator/widgets/boxes/height_box.dart';
 import 'package:bmi_calculator/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -28,6 +29,13 @@ class HomeView extends StatelessWidget {
               ],
             ),
           ),
+          SizedBox(
+            height: 20,
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24.0),
+            child: HeightBox(),
+          )
         ],
       ),
     );
