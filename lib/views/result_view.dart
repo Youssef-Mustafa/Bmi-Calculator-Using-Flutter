@@ -14,7 +14,6 @@ class ResultView extends StatelessWidget {
 
     final double height = args['height'];
     final int weight = args['weight'];
-    final int age = args['age'];
 
     // Calculate BMI
     double bmi = weight / ((height / 100) * (height / 100));
