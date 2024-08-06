@@ -1,23 +1,30 @@
-import 'package:bmi_calculator/constant.dart';
-import 'package:bmi_calculator/widgets/helper/height_row_details.dart';
 import 'package:flutter/material.dart';
+import 'package:bmi_calculator/constant.dart';
 
 class HeightBox extends StatefulWidget {
-  const HeightBox({super.key});
+  final double height;
+  final ValueChanged<double> onHeightChanged;
+
+  const HeightBox({
+    super.key,
+    required this.height,
+    required this.onHeightChanged,
+  });
 
   @override
   State<HeightBox> createState() => _HeightBoxState();
 }
 
 class _HeightBoxState extends State<HeightBox> {
-  double value = 150;
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
       height: 180,
       decoration: BoxDecoration(
-          color: kSecondaryColor, borderRadius: BorderRadius.circular(6)),
+        color: kSecondaryColor,
+        borderRadius: BorderRadius.circular(6),
+      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -28,36 +35,33 @@ class _HeightBoxState extends State<HeightBox> {
               fontSize: 20,
             ),
           ),
-          HeightRowDetails(value: value),
+          Text(
+            '${widget.height.toStringAsFixed(1)} cm',
+            style: const TextStyle(
+              color: kTextSecondaryColor,
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24.0),
-            child: sliderThemeData(context),
-          )
+            child: SliderTheme(
+              data: SliderTheme.of(context).copyWith(
+                activeTrackColor: kTextSecondaryColor,
+                thumbColor: kButtonsColor,
+                trackHeight: 1,
+                overlayColor: kButtonsColor.withAlpha(32),
+              ),
+              child: Slider(
+                value: widget.height,
+                min: 0,
+                max: 250,
+                onChanged: widget.onHeightChanged,
+              ),
+            ),
+          ),
         ],
       ),
     );
-  }
-
-  SliderTheme sliderThemeData(BuildContext context) {
-    return SliderTheme(
-      data: SliderTheme.of(context).copyWith(
-          activeTrackColor: kTextSecondaryColor,
-          thumbColor: kButtonsColor,
-          trackHeight: 1,
-          overlayColor: kButtonsColor.withAlpha(32)),
-      child: sliderValue(),
-    );
-  }
-
-  Slider sliderValue() {
-    return Slider(
-        value: value,
-        min: 0,
-        max: 250,
-        onChanged: (newValue) {
-          setState(() {
-            value = newValue;
-          });
-        });
   }
 }

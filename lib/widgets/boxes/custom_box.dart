@@ -1,18 +1,20 @@
+import 'package:flutter/material.dart';
 import 'package:bmi_calculator/constant.dart';
 import 'package:bmi_calculator/widgets/custom_icon.dart';
-import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class CustomBox extends StatefulWidget {
-  const CustomBox({super.key, required this.boxTitle});
+class CustomBox extends StatelessWidget {
   final String boxTitle;
-  @override
-  State<CustomBox> createState() => _CustomBoxState();
-}
+  final int value;
+  final ValueChanged<int> onValueChanged;
 
-class _CustomBoxState extends State<CustomBox> {
-  int weight = 74;
-  int age = 19;
+  const CustomBox({
+    super.key,
+    required this.boxTitle,
+    required this.value,
+    required this.onValueChanged,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,48 +28,44 @@ class _CustomBoxState extends State<CustomBox> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            widget.boxTitle.toUpperCase(),
+            boxTitle.toUpperCase(),
             style: const TextStyle(
-                color: kTextPrimaryColor,
-                fontSize: 16,
-                fontWeight: FontWeight.bold),
+              color: kTextPrimaryColor,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           Text(
-            widget.boxTitle == 'Weight' ? '$weight' : '$age',
+            '$value',
             style: const TextStyle(
-                color: kTextSecondaryColor,
-                fontSize: 60,
-                fontWeight: FontWeight.bold),
+              color: kTextSecondaryColor,
+              fontSize: 60,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               GestureDetector(
                 onTap: () {
-                  setState(() {
-                    widget.boxTitle == 'Weight' ? weight-- : age--;
-                    if (age < 1) age = 1;
-                    if (weight < 1) weight = 1;
-                  });
+                  int newValue = value - 1;
+                  if (boxTitle == 'Weight' && newValue < 1) newValue = 1;
+                  if (boxTitle == 'Age' && newValue < 1) newValue = 1;
+                  onValueChanged(newValue);
                 },
-                child: const CustomIcon(
-                  icon: FontAwesomeIcons.minus,
-                ),
+                child: const CustomIcon(icon: FontAwesomeIcons.minus),
               ),
               GestureDetector(
                 onTap: () {
-                  setState(() {
-                    widget.boxTitle == 'Weight' ? weight++ : age++;
-                    if (age >= 120) age = 120;
-                    if (weight >= 200) weight = 200;
-                  });
+                  int newValue = value + 1;
+                  if (boxTitle == 'Weight' && newValue > 200) newValue = 200;
+                  if (boxTitle == 'Age' && newValue > 120) newValue = 120;
+                  onValueChanged(newValue);
                 },
-                child: const CustomIcon(
-                  icon: Icons.add,
-                ),
+                child: const CustomIcon(icon: Icons.add),
               ),
             ],
-          )
+          ),
         ],
       ),
     );
